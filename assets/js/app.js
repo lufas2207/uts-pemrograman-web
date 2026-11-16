@@ -59,10 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="card-bottom">
                     <div class="harga">${formatRp(item.hargaSewa)} <small>/hari</small></div>
-                    ${item.tersedia 
-                        ? `<button class="btn btn-primary btn-sewa" data-id="${item.id}">Sewa</button>`
-                        : `<button class="btn btn-return btn-kembali" data-id="${item.id}">Kembalikan</button>`
-                    }
+                    <div class="card-actions">
+                        ${item.tersedia 
+                            ? `<button class="btn btn-primary btn-sewa" data-id="${item.id}">Sewa</button>
+                               <button class="btn btn-danger btn-hapus" data-id="${item.id}" data-judul="${item.judul}" title="Hapus Media">Hapus</button>`
+                            : `<button class="btn btn-return btn-kembali" data-id="${item.id}">Kembalikan</button>`
+                        }
+                    </div>
                 </div>
             </article>
         `).join('');
@@ -152,6 +155,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const json = await res.json();
             if (json.status) muatSemuaData();
+        }
+
+        if (e.target.classList.contains('btn-hapus')) {
+            const idMedia = e.target.dataset.id;
+            const judul = e.target.dataset.judul;
+
+            if (!confirm(`Yakin ingin menghapus "${judul}" dari katalog?`)) return;
+
+            const res = await fetch('api.php?action=hapus', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idMedia })
+            });
+            const json = await res.json();
+            if (json.status) {
+                muatSemuaData();
+            } else {
+                alert(json.pesan);
+            }
         }
     });
 

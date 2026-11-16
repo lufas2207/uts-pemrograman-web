@@ -75,6 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode($service->kembalikanMedia($idMedia));
         exit;
     }
+
+    if ($action === 'hapus') {
+        $idMedia = $input['idMedia'] ?? '';
+        echo json_encode($service->hapusMedia($idMedia));
+        exit;
+    }
 }
 
 http_response_code(404);

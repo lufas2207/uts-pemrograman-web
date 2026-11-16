@@ -34,14 +34,5 @@
         "hargaSewa": 12000,
         "infoEkstra": "310 Halaman",
         "tersedia": true
-    },
-    {
-        "id": "BK-05",
-        "tipe": "ebook",
-        "judul": "GAME",
-        "penulis": "YOGA",
-        "hargaSewa": 10000,
-        "infoEkstra": "1000",
-        "tersedia": true
     }
 ]

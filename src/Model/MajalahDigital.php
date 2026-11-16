@@ -19,7 +19,6 @@ class MajalahDigital extends Media {
         return $this->edisi;
     }
 
-    // Majalah tidak ada diskon durasi, flat per hari
     public function hitungTotalSewa(int $durasiHari): int {
         return $this->hargaSewa * $durasiHari;
     }
