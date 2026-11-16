@@ -1,15 +1,18 @@
 :root {
-    --bg-page: #f8fafc;
-    --bg-white: #ffffff;
-    --black: #0f172a;
-    --black-soft: #1e293b;
-    --blue: #2563eb;
-    --blue-hover: #1d4ed8;
-    --blue-light: #eff6ff;
-    --border: #e2e8f0;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --danger: #dc2626;
+    /*Warna Dark Mode & Gen-Z Aesthetic */
+    --bg-grad-1: #0b1224; /* Deep Navy */
+    --bg-grad-2: #1c1742; /* Midnight Purple */
+    --glass-bg: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(216, 220, 255, 0.13);
+    --glass-hover: rgba(255, 255, 255, 0.11);
+    --primary: #818cf8; /* Soft Indigo */
+    --primary-hover: #6d72ed;
+    --primary-light: rgba(129, 140, 248, 0.18);
+    --text-main: #f8fafc;
+    --text-muted: #a5b4cf;
+    --danger: #fb7185; /* Soft Rose/Red */
+    --danger-hover: #f43f5e;
+    --black-soft: rgba(8, 12, 28, 0.42);
 }
 
 * {
@@ -20,7 +23,11 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-page);
+    /* Latar gradasi berlapis dengan cahaya lembut, bukan hitam pekat */
+    background:
+        radial-gradient(ellipse at 12% 8%, rgba(99, 102, 241, 0.13), transparent 38%),
+        radial-gradient(ellipse at 88% 82%, rgba(139, 92, 246, 0.11), transparent 42%),
+        linear-gradient(135deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 100%);
     color: var(--text-main);
     line-height: 1.5;
     display: flex;
@@ -35,12 +42,14 @@ body {
     padding: 0 20px;
 }
 
-/* Header Hitam */
+/* Header Transparan & Blur */
 .navbar {
-    background-color: var(--black);
-    color: var(--bg-white);
+    background-color: rgba(11, 18, 36, 0.62);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--text-main);
     padding: 16px 0;
-    border-bottom: 3px solid var(--blue);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .nav-content {
@@ -58,8 +67,10 @@ body {
 .brand-dot {
     width: 12px;
     height: 12px;
-    background-color: var(--blue);
+    background-color: var(--primary);
     display: inline-block;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary);
 }
 
 .brand h1 {
@@ -69,7 +80,7 @@ body {
 }
 
 .brand span {
-    color: var(--blue);
+    color: var(--primary);
 }
 
 /* Main Area */
@@ -79,7 +90,7 @@ body {
     padding-bottom: 48px;
 }
 
-/* Toolbar */
+/* Toolbar & Pencarian */
 .toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -97,15 +108,23 @@ body {
 .search-box input {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
     font-size: 0.95rem;
-    background: var(--bg-white);
+    background: var(--glass-bg);
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.search-box input::placeholder {
+    color: var(--text-muted);
 }
 
 .search-box input:focus {
     outline: none;
-    border-color: var(--blue);
+    border-color: var(--primary);
+    background: var(--glass-hover);
+    box-shadow: 0 0 0 3px var(--primary-light);
 }
 
 .filter-group {
@@ -115,22 +134,29 @@ body {
 
 .filter-btn {
     padding: 8px 16px;
-    border: 1.5px solid var(--border);
-    background: var(--bg-white);
-    color: var(--text-main);
-    border-radius: 6px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-muted);
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: var(--glass-hover);
+    color: var(--text-main);
 }
 
 .filter-btn.active {
-    background: var(--black);
-    color: var(--bg-white);
-    border-color: var(--black);
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.24);
 }
 
-/* Grid Katalog */
+/* Grid Katalog - Glassmorphism */
 .katalog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -138,18 +164,23 @@ body {
 }
 
 .card {
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
 .card:hover {
-    border-color: var(--blue);
+    border-color: var(--primary);
+    transform: translateY(-6px);
+    background: var(--glass-hover);
 }
 
 .card-top {
@@ -164,9 +195,9 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     padding: 4px 8px;
-    border-radius: 4px;
-    background: var(--blue-light);
-    color: var(--blue);
+    border-radius: 6px;
+    background: var(--primary-light);
+    color: #818cf8; /* Light Indigo */
 }
 
 .badge-status {
@@ -174,13 +205,13 @@ body {
     font-weight: 600;
 }
 
-.status-ready { color: var(--blue); }
+.status-ready { color: #34d399; } /* Soft Green */
 .status-out { color: var(--text-muted); }
 
 .card h3 {
     font-size: 1.1rem;
     margin-bottom: 6px;
-    color: var(--black);
+    color: var(--text-main);
 }
 
 .card-meta {
@@ -190,7 +221,7 @@ body {
 }
 
 .card-bottom {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--glass-border);
     padding-top: 14px;
     display: flex;
     justify-content: space-between;
@@ -206,7 +237,7 @@ body {
 .harga {
     font-weight: 700;
     font-size: 1rem;
-    color: var(--black);
+    color: var(--text-main);
 }
 
 .harga small {
@@ -215,74 +246,91 @@ body {
     font-size: 0.8rem;
 }
 
-/* Buttons */
+/* Buttons yang Lebih Modern */
 .btn {
     padding: 8px 16px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
     border: none;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
-    background-color: var(--blue);
-    color: var(--bg-white);
+    background-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.22);
 }
 
 .btn-primary:hover {
-    background-color: var(--blue-hover);
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background-color: var(--border);
-    color: var(--black);
+    background-color: var(--glass-bg);
+    color: var(--text-main);
+    border: 1px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--glass-hover);
 }
 
 .btn-outline-light {
     background: transparent;
-    border: 1.5px solid var(--bg-white);
-    color: var(--bg-white);
+    border: 1.5px solid var(--glass-border);
+    color: var(--text-main);
 }
 
 .btn-outline-light:hover {
-    background: var(--blue);
-    border-color: var(--blue);
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: #ffffff;
 }
 
 .btn-return {
-    background: var(--black);
-    color: var(--bg-white);
+    background: var(--primary-light);
+    color: #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+.btn-return:hover {
+    background: var(--primary);
+    color: #fff;
 }
 
 .btn-danger {
     background-color: transparent;
     color: var(--danger);
-    border: 1.5px solid var(--danger);
+    border: 1px solid var(--danger);
     padding: 6px 10px;
 }
 
 .btn-danger:hover {
     background-color: var(--danger);
-    color: var(--bg-white);
+    color: #ffffff;
 }
 
-/* Riwayat Transaksi Section */
+/* Riwayat Transaksi Section (Glass Panel) */
 .riwayat-section {
     margin-top: 40px;
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
 .riwayat-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
-    margin-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .riwayat-header h2 {
@@ -290,17 +338,19 @@ body {
 }
 
 .badge-aktif {
-    background: var(--black);
-    color: var(--bg-white);
+    background: var(--primary-light);
+    color: #818cf8;
     font-size: 0.78rem;
     font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
 }
 
 .struk-empty {
     color: var(--text-muted);
     font-size: 0.9rem;
+    text-align: center;
+    padding: 20px 0;
 }
 
 .table-wrapper {
@@ -315,71 +365,85 @@ body {
 }
 
 .trx-table th {
-    background: var(--black);
-    color: var(--bg-white);
-    padding: 10px 12px;
+    background: var(--black-soft);
+    color: var(--text-muted);
+    padding: 12px;
     font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
 }
 
 .trx-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
+    padding: 12px;
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .trx-table tr:hover td {
-    background: var(--blue-light);
+    background: var(--glass-hover);
 }
 
 .status-pill {
     display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
     font-size: 0.75rem;
     font-weight: 700;
 }
 
 .pill-aktif {
-    background: var(--blue-light);
-    color: var(--blue);
-    border: 1px solid var(--blue);
+    background: var(--primary-light);
+    color: #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
 .pill-selesai {
-    background: var(--bg-page);
+    background: rgba(255,255,255,0.05);
     color: var(--text-muted);
-    border: 1px solid var(--border);
+    border: 1px solid var(--glass-border);
 }
 
-/* Modal */
+/* Modal Gelap */
 dialog.modal {
     margin: auto;
-    border: none;
-    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
     width: 95%;
     max-width: 440px;
     padding: 0;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    background: rgba(22, 27, 57, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--text-main);
 }
 
 dialog::backdrop {
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(5, 8, 20, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .modal-header {
-    background: var(--black);
-    color: var(--bg-white);
+    background: var(--black-soft);
     padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .btn-close {
     background: none;
     border: none;
-    color: var(--bg-white);
+    color: var(--text-muted);
     font-size: 1.5rem;
     cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-close:hover {
+    color: var(--danger);
 }
 
 .modal-body {
@@ -387,72 +451,92 @@ dialog::backdrop {
 }
 
 .info-buku-box {
-    background: var(--blue-light);
-    border-left: 4px solid var(--blue);
-    padding: 10px 12px;
-    margin-bottom: 16px;
+    background: var(--glass-bg);
+    border-left: 1px solid rgba(129, 140, 248, 0.55);
+    padding: 12px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    border-radius: 0 8px 8px 0;
 }
 
 .form-group {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .form-group label {
     display: block;
     font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    color: var(--text-muted);
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 9px 12px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
     font-size: 0.95rem;
+    background: var(--glass-bg);
+    color: var(--text-main);
+    transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--glass-hover);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Perbaikan warna teks dropdown pada browser tertentu */
+.form-group select option {
+    background: var(--bg-grad-1);
+    color: var(--text-main);
 }
 
 .hint {
     display: block;
     color: var(--text-muted);
     font-size: 0.78rem;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .error-msg {
     display: block;
     color: var(--danger);
     font-size: 0.8rem;
-    margin-top: 3px;
+    margin-top: 4px;
 }
 
 .estimasi-box {
-    background: var(--bg-page);
-    padding: 12px;
-    border-radius: 6px;
+    background: var(--black-soft);
+    padding: 14px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 16px;
-    border: 1px solid var(--border);
+    margin-top: 20px;
+    border: 1px solid var(--glass-border);
 }
 
 .modal-footer {
-    padding: 14px 20px;
-    background: var(--bg-page);
-    border-top: 1px solid var(--border);
+    padding: 16px 20px;
+    background: var(--black-soft);
+    border-top: 1px solid var(--glass-border);
     display: flex;
     justify-content: flex-end;
     gap: 10px;
 }
 
 .footer {
-    background: var(--black);
-    color: #94a3b8;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
     text-align: center;
-    padding: 16px 0;
+    padding: 20px 0;
     font-size: 0.85rem;
+    margin-top: auto;
 }
