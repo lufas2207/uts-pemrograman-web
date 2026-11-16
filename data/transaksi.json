@@ -1,0 +1,38 @@
+[
+    {
+        "kodeTransaksi": "TRX-6518",
+        "idMedia": "BK-01",
+        "judul": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "tipe": "EBOOK",
+        "peminjam": "budi",
+        "identitas": "1872367182",
+        "durasi": "3 Hari",
+        "totalBayar": 45000,
+        "waktuPinjam": "16 Nov 2026, 10:25",
+        "status": "SELESAI"
+    },
+    {
+        "kodeTransaksi": "TRX-6354",
+        "idMedia": "BK-03",
+        "judul": "Algoritma dan Struktur Data dengan Python",
+        "tipe": "EBOOK",
+        "peminjam": "asep",
+        "identitas": "182738619827",
+        "durasi": "3 Hari",
+        "totalBayar": 36000,
+        "waktuPinjam": "16 Nov 2026, 10:25",
+        "status": "SELESAI"
+    },
+    {
+        "kodeTransaksi": "TRX-2234",
+        "idMedia": "BK-01",
+        "judul": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "tipe": "EBOOK",
+        "peminjam": "budi",
+        "identitas": "87621372693",
+        "durasi": "3 Hari",
+        "totalBayar": 45000,
+        "waktuPinjam": "16 Nov 2026, 10:31",
+        "status": "SELESAI"
+    }
+]

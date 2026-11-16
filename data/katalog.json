@@ -1,0 +1,47 @@
+[
+    {
+        "id": "BK-01",
+        "tipe": "ebook",
+        "judul": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "penulis": "Robert C. Martin",
+        "hargaSewa": 15000,
+        "infoEkstra": "464 Halaman",
+        "tersedia": true
+    },
+    {
+        "id": "BK-02",
+        "tipe": "ebook",
+        "judul": "Design Patterns: Elements of Reusable Object-Oriented Software",
+        "penulis": "Erich Gamma",
+        "hargaSewa": 18000,
+        "infoEkstra": "395 Halaman",
+        "tersedia": true
+    },
+    {
+        "id": "MJ-01",
+        "tipe": "majalah",
+        "judul": "Tech Monthly Indonesia - Edisi AI & Cloud",
+        "penulis": "Redaksi TechID",
+        "hargaSewa": 10000,
+        "infoEkstra": "Edisi November 2026",
+        "tersedia": true
+    },
+    {
+        "id": "BK-03",
+        "tipe": "ebook",
+        "judul": "Algoritma dan Struktur Data dengan Python",
+        "penulis": "Rinaldi Munir",
+        "hargaSewa": 12000,
+        "infoEkstra": "310 Halaman",
+        "tersedia": true
+    },
+    {
+        "id": "BK-05",
+        "tipe": "ebook",
+        "judul": "GAME",
+        "penulis": "YOGA",
+        "hargaSewa": 10000,
+        "infoEkstra": "1000",
+        "tersedia": true
+    }
+]
