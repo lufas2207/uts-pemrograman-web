@@ -14,7 +14,11 @@
                 <span class="brand-dot"></span>
                 <h1>Pustaka<span>Byte</span></h1>
             </div>
-            <nav class="nav-actions">
+            <!-- Tombol Dark Mode & Tambah Katalog digabung rapi di sini -->
+            <nav class="nav-actions" style="display: flex; align-items: center; gap: 10px;">
+                <button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
+                    ☀️
+                </button>
                 <button type="button" id="btn-buka-tambah" class="btn btn-outline-light">+ Tambah Katalog</button>
             </nav>
         </div>

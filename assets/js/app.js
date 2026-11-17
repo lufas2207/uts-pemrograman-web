@@ -8,6 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalSewa = document.getElementById('modal-sewa');
     const modalTambah = document.getElementById('modal-tambah');
 
+    // --- Logika Dark Mode ---
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+        if (darkModeToggle) darkModeToggle.textContent = '🌙';
+    }
+
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                darkModeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
+    // --- Sisa Logika Aplikasi ---
     const formatRp = (angka) => 'Rp ' + Number(angka).toLocaleString('id-ID');
 
     async function muatSemuaData() {
